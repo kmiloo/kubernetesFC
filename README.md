@@ -4,10 +4,10 @@ Este proyecto implementa un sistema de votación **Cliente-Servidor** conteneriz
 
 El sistema permite registrar votos en tiempo real, visualizar el conteo y **evita fraudes** impidiendo que un mismo usuario (identificado por su nombre) vote más de una vez en la misma sesión.
 
-**Asignatura:** [Nombre de la Asignatura]  
+**Asignatura:** Sistemas distribuidos  
 **Autores:**
-* [Tu Nombre]
-* [Nombre de tu Pareja]
+* Francisco Hernandez
+* Camilo Lovera
 
 ---
 
@@ -28,6 +28,8 @@ sistema-votacion/
 │
 ├── Dockerfile          # Instrucciones de empaquetado para Docker
 └── README.md           # Documentación del proyecto
+
+---
 
 ⚙️ Prerrequisitos
 
