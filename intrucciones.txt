@@ -1,0 +1,59 @@
+-----------------------Despliegue en Kubernetes---------------------
+# Desplegar todo (Deployment y Servicio)
+kubectl apply -f k8s/
+
+# Verificar que los PODS estén corriendo (Status: Running)
+kubectl get pods
+
+# Verificar el servicio y la IP/Puerto
+kubectl get services
+
+----------------------------Ver los votos en tiempo real-------------------
+
+# 1. Obtén el nombre exacto del pod
+kubectl get pods
+
+kubectl port-forward service/voto-service 8080:80
+
+# 2. Mira los logs (reemplaza el nombre del pod)
+kubectl logs -f voto-server-deployment-7ddbccd5c-7k5td
+
+
+
+#elimn
+kubectl delete pods --all
+
+
+-------------------------------------------------------------------------------
+------------------------Instrucciones para el Cliente (Votación)---------------
+pip install -r app/requirements.txt
+
+python app/client.py
+
+----------------------------------------------------------------------------------------
+------------------------------Con docker--------------------------------------------------
+# para subirlo
+docker build -t kmiloo/voto-server:v1 .
+
+docker push kmiloo/voto-server:v1
+
+
+# para correrlo
+docker run -it --network host kmiloo/voto-server:v1 python client.py
+
+
+
+
+-----------------------------------------------------------------------------------
+-----------------------Resumen---------------------------------------
+
+# consola servidor
+kubectl apply -f k8s/
+
+# consola sevidor
+kubectl port-forward service/voto-service 8080:80
+
+# consola cliente
+docker run -it --network host kmiloo/voto-server:v1 python client.py
+
+# y en web http://localhost:8080/ apareceran los votos

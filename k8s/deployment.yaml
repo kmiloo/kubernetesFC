@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voto-server-deployment
+spec:
+  replicas: 1 # Cuántas copias del servidor queremos
+  selector:
+    matchLabels:
+      app: voto-server
+  template:
+    metadata:
+      labels:
+        app: voto-server
+    spec:
+      containers:
+      - name: voto-server
+        image: kmiloo/voto-server:v1 # <--- TU IMAGEN AQUÍ
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voto-service
+spec:
+  type: LoadBalancer # Esto nos da una IP externa (o localhost en Docker Desktop)
+  selector:
+    app: voto-server
+  ports:
+    - protocol: TCP
+      port: 80       # Puerto externo (al que llamarán los clientes)
+      targetPort: 5000 # Puerto interno (donde corre Python)
