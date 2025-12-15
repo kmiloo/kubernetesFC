@@ -43,14 +43,14 @@ Para ejecutar este proyecto necesitas:
 #   Instrucciones para el Servidor
 ## 1. Construcción y Publicación de la Imagen
 
-    # a. Iniciar sesión en Docker Hub
+    # Iniciar sesión en Docker Hub
     docker login
 
-    # b. Construir la imagen
-    # IMPORTANTE: Reemplaza 'tu_usuario' con tu ID real de Docker Hub
+    # Construir la imagen
+    # Reemplaza 'tu_usuario' con tu ID real de Docker Hub
     docker build -t tu_usuario/voto-server:v1 .
 
-    # c. Subir la imagen a la nube
+    # Subir la imagen a la nube
     docker push tu_usuario/voto-server:v1
 
 
@@ -60,6 +60,7 @@ Para ejecutar este proyecto necesitas:
 
     kubectl apply -f k8s/
 
+    # Verificacion de que esta funcionando
     kubectl get pods
 
 ## 3. Habilitar Acceso (Port Forwarding)
