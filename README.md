@@ -17,14 +17,12 @@ El sistema permite registrar votos en tiempo real, visualizar el conteo y **evit
 sistema-votacion/
 │
 ├── app/
-│   ├── server.py       # Lógica del servidor (API REST con Flask)
-│   ├── client.py       # Interfaz de votación (Script interactivo)
+│   ├── server.py       # Lógica del servidor
+│   ├── client.py       # Interfaz de votación
 │   └── requirements.txt
 │
 ├── k8s/
 │   ├── deployment.yaml # Configuración de Pods y Réplicas
-│   ├── service.yaml    # Configuración de Red (LoadBalancer)
-│   └── ingress.yaml    # Reglas de enrutamiento (Punto Extra)
 │
 ├── Dockerfile          # Instrucciones de empaquetado para Docker
 └── README.md           # Documentación del proyecto
@@ -58,6 +56,8 @@ Para ejecutar este proyecto necesitas:
 
 ## 2. Despliegue en Kubernetes
 
+    minikube start
+
     kubectl apply -f k8s/
 
     kubectl get pods
@@ -67,14 +67,18 @@ Para ejecutar este proyecto necesitas:
     # Redirige el puerto 8080 local al puerto 80 del servicio
     kubectl port-forward service/voto-service 8080:80
 
+## 4. Acceso Remoto con Ngrok
+    # En consola
+    ngrok http 8080
+
 # Instrucciones para el Cliente (Votantes)
 
 ## 1. Ejecutar el 
-    # Reemplaza 'tu_usuario' con el usuario del expositor
+    # Reemplaza 'tu_usuario' (kmiloo)
     docker run -it --network host tu_usuario/voto-server:v1 python client.py
 
-## 2. Acceso Remoto con Ngrok
-    ngrok http 8080
+    #Se debera ingresar la direccion dada por ngrok al realizar el voto
+
 
 # Visualización de Resultados
 
