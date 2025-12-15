@@ -87,5 +87,5 @@ Para ejecutar este proyecto necesitas:
     kubectl logs -f deployment/voto-server-deployment
 
 ## 2. Contador de votos
-    # entrar por comando o directamente por el navegador
+    # Entrar por comando o directamente por el navegador la direccion ip dependera de la dada por ngrok
     watch -n 2 "curl -s http://localhost:8080/"
